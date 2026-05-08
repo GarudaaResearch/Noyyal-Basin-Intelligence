@@ -1,0 +1,11 @@
+{
+  "name": "noyyal-api-root",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd services/api-node && npm run dev",
+    "start": "cd services/api-node && npm start",
+    "install": "cd services/api-node && npm install"
+  }
+}
