@@ -1,14 +1,11 @@
 [build]
 base = "apps/web"
-command = "npm install && npm run build"
+command = "npm run build"
 publish = ".next"
 
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+[[plugins]]
+package = "@netlify/plugin-nextjs"
 
-[env]
 [env.production]
 NEXT_PUBLIC_API_BASE_URL = "https://noyyal-api.onrender.com"
 
