@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Noyyal Smart Basin Intelligence API
+  version: 0.1.0
+  description: >
+    MVP API for real-time sensor ingestion and operational alerting.
+servers:
+  - url: http://localhost:8000
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  service: { type: string }
+  /v1/sensors/readings:
+    post:
+      summary: Ingest a sensor reading
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SensorReadingIn"
+      responses:
+        "200":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SensorReadingOut"
+    get:
+      summary: List recent sensor readings
+      parameters:
+        - in: query
+          name: device_id
+          schema: { type: string }
+        - in: query
+          name: kind
+          schema: { type: string }
+        - in: query
+          name: limit
+          schema: { type: integer, default: 200, minimum: 1, maximum: 2000 }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SensorReadingOut"
+  /v1/alerts:
+    post:
+      summary: Create an alert event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AlertEventCreate"
+      responses:
+        "200":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AlertEventOut"
+    get:
+      summary: List recent alert events
+      parameters:
+        - in: query
+          name: status
+          schema: { type: string }
+        - in: query
+          name: category
+          schema: { type: string }
+        - in: query
+          name: limit
+          schema: { type: integer, default: 200, minimum: 1, maximum: 2000 }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AlertEventOut"
+components:
+  schemas:
+    SensorReadingIn:
+      type: object
+      required: [device_id, observed_at, lat, lon, kind, metrics]
+      properties:
+        device_id: { type: string, minLength: 2, maxLength: 64 }
+        observed_at: { type: string, format: date-time }
+        lat: { type: number }
+        lon: { type: number }
+        kind:
+          type: string
+          enum: [water, air, soil, tree, camera, acoustic]
+        metrics:
+          type: object
+          additionalProperties: true
+    SensorReadingOut:
+      allOf:
+        - $ref: "#/components/schemas/SensorReadingIn"
+        - type: object
+          required: [id]
+          properties:
+            id: { type: string }
+    AlertEventCreate:
+      type: object
+      required: [severity, category, title, description]
+      properties:
+        severity:
+          type: string
+          enum: [info, warning, critical]
+        category:
+          type: string
+          enum: [water, encroachment, tree, flood, groundwater, biodiversity]
+        title: { type: string }
+        description: { type: string }
+        lat: { type: number, nullable: true }
+        lon: { type: number, nullable: true }
+        source:
+          type: object
+          additionalProperties: true
+    AlertEventOut:
+      type: object
+      required: [id, created_at, severity, category, title, description, source, status]
+      properties:
+        id: { type: string }
+        created_at: { type: string, format: date-time }
+        severity:
+          type: string
+          enum: [info, warning, critical]
+        category:
+          type: string
+          enum: [water, encroachment, tree, flood, groundwater, biodiversity]
+        title: { type: string }
+        description: { type: string }
+        lat: { type: number, nullable: true }
+        lon: { type: number, nullable: true }
+        source:
+          type: object
+          additionalProperties: true
+        status:
+          type: string
+          enum: [open, ack, closed]
+

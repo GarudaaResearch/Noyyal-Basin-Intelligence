@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noyyal Basin Intelligence - Interactive Geospatial Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDummyKey&libraries=maps,marker"></script>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b1220;
+        --bg-secondary: #111d2e;
+        --card: rgba(255, 255, 255, 0.05);
+        --card-hover: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.1);
+        --text: #e7eefc;
+        --text-accent: #64b5f6;
+        --muted: rgba(231, 238, 252, 0.7);
+        --success: #4caf50;
+        --warning: #ff9800;
+        --danger: #f44336;
+        --info: #2196f3;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, rgba(100, 181, 246, 0.1) 0%, rgba(66, 165, 245, 0.05) 100%);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 24px;
+        backdrop-filter: blur(10px);
+        position: relative;
+        z-index: 100;
+      }
+
+      .header-content {
+        max-width: 1800px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .header-title {
+        flex: 1;
+      }
+
+      .header-title h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #64b5f6, #2196f3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .header-title .sub {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        padding: 8px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: var(--text-accent);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #2196f3, #1976d2);
+        border-color: #2196f3;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #42a5f5, #1e88e5);
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        background: rgba(76, 175, 80, 0.15);
+        color: #4caf50;
+        border: 1px solid rgba(76, 175, 80, 0.3);
+      }
+
+      .status-badge.error {
+        background: rgba(244, 67, 54, 0.15);
+        color: #f44336;
+        border-color: rgba(244, 67, 54, 0.3);
+      }
+
+      .main {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 2.5fr 1fr;
+        gap: 0;
+        overflow: hidden;
+      }
+
+      @media (max-width: 1400px) {
+        .main {
+          grid-template-columns: 1fr;
+        }
+        .map-container {
+          order: -1;
+        }
+      }
+
+      .map-container {
+        position: relative;
+        background: #0a0e17;
+        border-right: 1px solid var(--border);
+      }
+
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-controls {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 50;
+      }
+
+      .map-control-btn {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--border);
+        background: rgba(11, 18, 32, 0.9);
+        color: var(--text);
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.2s ease;
+      }
+
+      .map-control-btn:hover {
+        background: rgba(11, 18, 32, 1);
+        border-color: var(--text-accent);
+      }
+
+      .sidebar {
+        background: var(--bg-secondary);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .tabs {
+        display: flex;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+        padding: 0;
+        margin: 0;
+      }
+
+      .tab {
+        flex: 1;
+        padding: 14px 16px;
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        border-bottom: 2px solid transparent;
+      }
+
+      .tab:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .tab.active {
+        color: var(--text-accent);
+        border-bottom-color: var(--text-accent);
+      }
+
+      .tab-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 0;
+      }
+
+      .tab-content.hidden {
+        display: none;
+      }
+
+      .content-section {
+        padding: 14px;
+      }
+
+      .filters {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 6px 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--muted);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: all 0.2s ease;
+      }
+
+      .filter-btn.active {
+        background: rgba(33, 150, 243, 0.2);
+        color: var(--text-accent);
+        border-color: var(--text-accent);
+      }
+
+      .filter-btn:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .item {
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: 10px;
+        padding: 12px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .item:hover {
+        background: var(--card-hover);
+        border-color: var(--text-accent);
+      }
+
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .item-title {
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .item-meta {
+        color: var(--muted);
+        font-size: 11px;
+        margin-top: 4px;
+      }
+
+      .item-location {
+        color: var(--text-accent);
+        font-size: 11px;
+        margin-top: 2px;
+      }
+
+      .pill {
+        display: inline-block;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .pill.severity-warning {
+        background: rgba(255, 152, 0, 0.15);
+        color: #ff9800;
+        border-color: rgba(255, 152, 0, 0.3);
+      }
+
+      .pill.severity-error {
+        background: rgba(244, 67, 54, 0.15);
+        color: #f44336;
+        border-color: rgba(244, 67, 54, 0.3);
+      }
+
+      .pill.severity-info {
+        background: rgba(33, 150, 243, 0.15);
+        color: #2196f3;
+        border-color: rgba(33, 150, 243, 0.3);
+      }
+
+      .stats-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin: 12px 0;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-accent);
+      }
+
+      .stat-label {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .item-body {
+        margin-top: 8px;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      pre {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 8px;
+        overflow-x: auto;
+        font-size: 11px;
+        margin: 6px 0 0;
+        font-family: "Courier New", monospace;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--muted);
+      }
+
+      .empty-icon {
+        font-size: 40px;
+        margin-bottom: 12px;
+        opacity: 0.5;
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Custom map marker styles */
+      .marker-sensor {
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        border: 2px solid #fff;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .marker-alert {
+        background: linear-gradient(135deg, #f44336, #e53935);
+        border: 2px solid #fff;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        animation: pulse 2s infinite;
+        box-shadow: 0 2px 8px rgba(244, 67, 54, 0.5);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 2px 8px rgba(244, 67, 54, 0.5);
+        }
+        50% {
+          box-shadow: 0 2px 16px rgba(244, 67, 54, 0.8);
+        }
+      }
+
+      .popup-content {
+        font-size: 12px;
+        color: #333;
+      }
+
+      .popup-title {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .leaflet-popup-content {
+        margin: 0 !important;
+      }
+
+      .leaflet-popup-content-wrapper {
+        background: #0b1220 !important;
+        border-radius: 8px !important;
+        border: 1px solid var(--border) !important;
+      }
+
+      .leaflet-popup-tip {
+        background: #0b1220 !important;
+      }
+
+      /* Leaflet layer control styling */
+      .leaflet-control-layers {
+        background: rgba(11, 18, 32, 0.95) !important;
+        border: 1px solid rgba(100, 181, 246, 0.3) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: blur(10px);
+      }
+
+      .leaflet-control-layers-list {
+        padding: 8px !important;
+      }
+
+      .leaflet-control-layers label {
+        color: var(--text) !important;
+        font-size: 12px !important;
+        padding: 6px 8px !important;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+
+      .leaflet-control-layers input {
+        cursor: pointer;
+        accent-color: #2196f3 !important;
+      }
+
+      .leaflet-control-layers-separator {
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        margin: 8px 0 !important;
+      }
+
+      /* River highlight effect */
+      .river-highlight {
+        filter: brightness(1.1) saturate(1.2);
+      }
+
+      /* Footer styling */
+      .footer {
+        background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(17, 29, 46, 0.95) 100%);
+        border-top: 1px solid rgba(100, 181, 246, 0.2);
+        padding: 16px 24px;
+        text-align: center;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .footer a {
+        color: var(--text-accent);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .footer a:hover {
+        color: #64b5f6;
+        text-decoration: underline;
+      }
+
+      .footer-separator {
+        margin: 0 6px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-content">
+          <div class="header-title">
+            <h1>🌍 Noyyal Basin Intelligence</h1>
+            <div class="sub">Real-time Geospatial Environmental Monitoring & AI Analytics</div>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-primary" id="refresh">🔄 Refresh</button>
+            <button class="btn" id="seed">🌱 Add Sample Data</button>
+            <span class="status-badge" id="status">● Checking...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="map-container">
+          <div id="map"></div>
+          <div class="map-controls">
+            <button class="map-control-btn" title="Zoom In" onclick="window.mapInstance?.zoomIn?.()">+</button>
+            <button class="map-control-btn" title="Zoom Out" onclick="window.mapInstance?.zoomOut?.()">−</button>
+            <button class="map-control-btn" title="Locate" onclick="window.locateUser?.()">📍</button>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <div class="tabs">
+            <button class="tab active" data-tab="alerts">
+              🚨 <span>Alerts</span> <span id="alertCount" style="margin-left: auto">(0)</span>
+            </button>
+            <button class="tab" data-tab="sensors">
+              📊 <span>Sensors</span> <span id="sensorCount" style="margin-left: auto">(0)</span>
+            </button>
+            <button class="tab" data-tab="analytics">
+              📈 <span>Analytics</span>
+            </button>
+          </div>
+
+          <div class="tab-content" id="alerts-tab">
+            <div class="content-section">
+              <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="warning">⚠️ Warning</button>
+                <button class="filter-btn" data-filter="error">🔴 Error</button>
+                <button class="filter-btn" data-filter="info">ℹ️ Info</button>
+              </div>
+              <div id="alerts-list"></div>
+            </div>
+          </div>
+
+          <div class="tab-content hidden" id="sensors-tab">
+            <div class="content-section">
+              <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="water">💧 Water</button>
+                <button class="filter-btn" data-filter="tree">🌳 Tree</button>
+                <button class="filter-btn" data-filter="air">🌬️ Air</button>
+              </div>
+              <div id="sensors-list"></div>
+            </div>
+          </div>
+
+          <div class="tab-content hidden" id="analytics-tab">
+            <div class="content-section">
+              <div class="stats-row">
+                <div class="stat-box">
+                  <div class="stat-value" id="total-alerts">0</div>
+                  <div class="stat-label">Total Alerts</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-value" id="total-sensors">0</div>
+                  <div class="stat-label">Active Sensors</div>
+                </div>
+              </div>
+              <div class="stats-row">
+                <div class="stat-box">
+                  <div class="stat-value" id="critical-count">0</div>
+                  <div class="stat-label">Critical Issues</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-value" id="healthy-count">0</div>
+                  <div class="stat-label">Healthy</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>© 2026 Noyyal Basin Intelligence</span>
+      <span class="footer-separator">|</span>
+      <span>Intelligent Design &amp; Code by</span>
+      <span class="footer-separator">|</span>
+      <a href="https://www.linkedin.com/in/profanjitraja" target="_blank" rel="noopener noreferrer">Prof. Anjit Raja R</a>
+    </div>
+
+    <script>
+      // Global state
+      window.dashboardState = {
+        alerts: [],
+        readings: [],
+        map: null,
+        markers: {
+          sensors: [],
+          alerts: [],
+        },
+        activeTab: "alerts",
+        activeFilter: "all",
+      };
+
+      const $ = (id) => document.getElementById(id);
+      const ds = window.dashboardState;
+
+      // API calls
+      async function api(path, opts) {
+        const res = await fetch(path, opts);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      }
+
+      // Initialize map
+      function initMap() {
+        const defaultLat = 11.0036;
+        const defaultLon = 76.9655;
+
+        ds.map = L.map("map", {
+          center: [defaultLat, defaultLon],
+          zoom: 12,
+          attributionControl: false,
+          zoomControl: false,
+        });
+
+        // Add multiple tile layers
+        const osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap",
+          className: "map-layer-osm",
+        });
+
+        // Satellite imagery layer (USGS)
+        const satelliteLayer = L.tileLayer(
+          "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}",
+          {
+            attribution: "USGS",
+            className: "map-layer-satellite",
+          }
+        );
+
+        // Hybrid layer (Satellite with labels)
+        const hybridLayer = L.tileLayer(
+          "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          {
+            attribution: "Esri",
+            className: "map-layer-hybrid",
+          }
+        );
+
+        // Default to satellite
+        satelliteLayer.addTo(ds.map);
+
+        // Add layer control
+        const baseLayers = {
+          "🌍 Street Map": osmLayer,
+          "🛰️ Satellite": satelliteLayer,
+          "🗺️ Hybrid": hybridLayer,
+        };
+
+        L.control
+          .layers(baseLayers, null, {
+            position: "topleft",
+            collapsed: false,
+          })
+          .addTo(ds.map);
+
+        // Style the layer control
+        const layerControl = document.querySelector(".leaflet-control-layers");
+        if (layerControl) {
+          layerControl.style.background = "rgba(11, 18, 32, 0.9)";
+          layerControl.style.border = "1px solid rgba(255, 255, 255, 0.1)";
+          layerControl.style.borderRadius = "8px";
+        }
+
+        window.mapInstance = ds.map;
+        ds.mapCenter = { lat: defaultLat, lon: defaultLon };
+      }
+
+      // Create marker for sensor
+      function createSensorMarker(reading) {
+        const marker = L.marker([reading.lat, reading.lon], {
+          icon: L.divIcon({
+            html: '<div class="marker-sensor">📊</div>',
+            iconSize: [24, 24],
+            className: "",
+          }),
+          title: reading.device_id,
+        });
+
+        const metricsHtml = Object.entries(reading.metrics)
+          .map(([k, v]) => `<strong>${k}:</strong> ${typeof v === "number" ? v.toFixed(2) : v}`)
+          .join("<br>");
+
+        // Add satellite image thumbnail to popup
+        const popupContent = `
+          <div class="popup-content">
+            <div class="popup-title">${reading.device_id}</div>
+            <div>${reading.kind}</div>
+            <div style="font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 4px">${new Date(reading.observed_at).toLocaleString()}</div>
+            <div style="margin-top: 8px; width: 180px; height: 120px; background: url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/12/${Math.floor((reading.lon + 180) / 360 * Math.pow(2, 12))}/${Math.floor((1 - Math.log(Math.tan(reading.lat * Math.PI / 180) + 1 / Math.cos(reading.lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 12))}'); background-size: cover; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);"></div>
+            <hr style="margin: 6px 0; border: none; border-top: 1px solid rgba(255,255,255,0.1)">
+            <div>${metricsHtml}</div>
+          </div>
+        `;
+
+        marker.bindPopup(popupContent);
+
+        return marker;
+      }
+
+      // Create marker for alert
+      function createAlertMarker(alert) {
+        if (!alert.lat || !alert.lon) return null;
+
+        const iconEmoji = alert.severity === "warning" ? "⚠️" : alert.severity === "error" ? "🔴" : "ℹ️";
+
+        const marker = L.marker([alert.lat, alert.lon], {
+          icon: L.divIcon({
+            html: `<div class="marker-alert">${iconEmoji}</div>`,
+            iconSize: [28, 28],
+            className: "",
+          }),
+          title: alert.title,
+        });
+
+        // Add satellite image thumbnail to popup
+        const popupContent = `
+          <div class="popup-content">
+            <div class="popup-title">${alert.title}</div>
+            <div>${alert.description}</div>
+            <div style="margin-top: 8px; width: 180px; height: 120px; background: url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/12/${Math.floor((alert.lon + 180) / 360 * Math.pow(2, 12))}/${Math.floor((1 - Math.log(Math.tan(alert.lat * Math.PI / 180) + 1 / Math.cos(alert.lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 12))}'); background-size: cover; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);"></div>
+            <div style="font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 8px">
+              ${alert.severity.toUpperCase()} | ${new Date(alert.created_at).toLocaleString()}
+            </div>
+          </div>
+        `;
+
+        marker.bindPopup(popupContent);
+
+        return marker;
+      }
+
+      // Render alerts list
+      function renderAlerts() {
+        const filtered = ds.activeFilter === "all" ? ds.alerts : ds.alerts.filter((a) => a.severity === ds.activeFilter);
+
+        const html =
+          filtered.length === 0
+            ? '<div class="empty-state"><div class="empty-icon">✓</div><div>No alerts</div></div>'
+            : filtered
+                .map(
+                  (a) => `
+          <div class="item" onclick="window.focusAlert('${a.id}')">
+            <div class="item-header">
+              <div>
+                <div class="item-title">${a.title}</div>
+                <div class="item-meta">${new Date(a.created_at).toLocaleString()}</div>
+                <div class="item-location">📍 ${a.lat?.toFixed(4)}, ${a.lon?.toFixed(4)}</div>
+              </div>
+              <span class="pill severity-${a.severity}">${a.severity.toUpperCase()}</span>
+            </div>
+            <div class="item-body">${a.description}</div>
+          </div>
+        `,
+                )
+                .join("");
+
+        $("alerts-list").innerHTML = html;
+      }
+
+      // Render sensors list
+      function renderSensors() {
+        const filtered =
+          ds.activeFilter === "all" ? ds.readings : ds.readings.filter((r) => r.kind === ds.activeFilter);
+
+        const html =
+          filtered.length === 0
+            ? '<div class="empty-state"><div class="empty-icon">📊</div><div>No sensors</div></div>'
+            : filtered
+                .map(
+                  (r) => `
+          <div class="item" onclick="window.focusSensor('${r.id}')">
+            <div class="item-header">
+              <div>
+                <div class="item-title">${r.device_id}</div>
+                <div class="item-meta">${r.kind.toUpperCase()} | ${new Date(r.observed_at).toLocaleString()}</div>
+                <div class="item-location">📍 ${r.lat.toFixed(4)}, ${r.lon.toFixed(4)}</div>
+              </div>
+              <span class="pill">${r.kind}</span>
+            </div>
+            <div class="item-body">
+              <pre>${JSON.stringify(r.metrics, null, 2)}</pre>
+            </div>
+          </div>
+        `,
+                )
+                .join("");
+
+        $("sensors-list").innerHTML = html;
+      }
+
+      // Update map markers
+      function updateMapMarkers() {
+        // Clear existing markers
+        ds.markers.sensors.forEach((m) => ds.map.removeLayer(m));
+        ds.markers.alerts.forEach((m) => ds.map.removeLayer(m));
+        ds.markers = { sensors: [], alerts: [] };
+
+        // Add sensor markers
+        ds.readings.forEach((r) => {
+          const marker = createSensorMarker(r);
+          marker.addTo(ds.map);
+          ds.markers.sensors.push(marker);
+        });
+
+        // Add alert markers
+        ds.alerts.forEach((a) => {
+          const marker = createAlertMarker(a);
+          if (marker) {
+            marker.addTo(ds.map);
+            ds.markers.alerts.push(marker);
+          }
+        });
+      }
+
+      // Focus on alert
+      window.focusAlert = (id) => {
+        const alert = ds.alerts.find((a) => a.id === id);
+        if (alert && alert.lat && alert.lon) {
+          ds.map.setView([alert.lat, alert.lon], 14);
+        }
+      };
+
+      // Focus on sensor
+      window.focusSensor = (id) => {
+        const sensor = ds.readings.find((r) => r.id === id);
+        if (sensor) {
+          ds.map.setView([sensor.lat, sensor.lon], 14);
+        }
+      };
+
+      // Locate user
+      window.locateUser = () => {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition((pos) => {
+            ds.map.setView([pos.coords.latitude, pos.coords.longitude], 14);
+          });
+        }
+      };
+
+      // Refresh data
+      async function refresh() {
+        try {
+          const health = await api("/health");
+          $("status").textContent = `● ${health.status.toUpperCase()}`;
+          $("status").classList.remove("error");
+        } catch (e) {
+          $("status").textContent = "● OFFLINE";
+          $("status").classList.add("error");
+          return;
+        }
+
+        try {
+          const [alerts, readings] = await Promise.all([api("/v1/alerts?limit=100"), api("/v1/sensors/readings?limit=100")]);
+
+          ds.alerts = alerts;
+          ds.readings = readings;
+
+          $("alertCount").textContent = `(${alerts.length})`;
+          $("sensorCount").textContent = `(${readings.length})`;
+          $("total-alerts").textContent = alerts.length;
+          $("total-sensors").textContent = new Set(readings.map((r) => r.device_id)).size;
+          $("critical-count").textContent = alerts.filter((a) => a.severity === "error").length;
+          $("healthy-count").textContent = alerts.filter((a) => a.severity === "info").length;
+
+          renderAlerts();
+          renderSensors();
+          updateMapMarkers();
+        } catch (e) {
+          console.error("Error fetching data:", e);
+        }
+      }
+
+      // Seed data
+      async function seed() {
+        try {
+          const now = new Date().toISOString();
+          const locations = [
+            { id: "UKKADAM-01", lat: 11.005, lon: 76.961 },
+            { id: "UKKADAM-02", lat: 11.008, lon: 76.962 },
+            { id: "NOYYA-01", lat: 11.002, lon: 76.958 },
+          ];
+
+          for (const loc of locations) {
+            await api("/v1/sensors/readings", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({
+                device_id: `NOYYA-WQ-${loc.id}`,
+                observed_at: now,
+                lat: loc.lat,
+                lon: loc.lon,
+                kind: "water",
+                metrics: {
+                  ph: (7 + Math.random()).toFixed(2),
+                  turbidity_ntu: (8 + Math.random() * 3).toFixed(1),
+                  do_mg_l: (5.5 + Math.random()).toFixed(1),
+                  tds_ppm: 650 + Math.floor(Math.random() * 100),
+                  temp_c: (28 + Math.random() * 2).toFixed(1),
+                },
+              }),
+            });
+          }
+
+          for (const loc of locations) {
+            await api("/v1/alerts", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({
+                severity: Math.random() > 0.7 ? "error" : "warning",
+                category: "water",
+                title: Math.random() > 0.5 ? "Turbidity spike detected" : "Oxygen level low",
+                description: "Automated anomaly detection triggered. Recommend field verification.",
+                lat: loc.lat + (Math.random() * 0.002 - 0.001),
+                lon: loc.lon + (Math.random() * 0.002 - 0.001),
+                source: { rule: "threshold", metric: "water_quality" },
+              }),
+            });
+          }
+
+          await refresh();
+        } catch (e) {
+          console.error("Error seeding data:", e);
+        }
+      }
+
+      // Tab switching
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+          document.querySelectorAll(".tab-content").forEach((c) => c.classList.add("hidden"));
+
+          tab.classList.add("active");
+          const tabName = tab.getAttribute("data-tab");
+          $(`${tabName}-tab`).classList.remove("hidden");
+          ds.activeTab = tabName;
+
+          // Resize map after tab switch
+          setTimeout(() => ds.map?.invalidateSize?.(), 100);
+        });
+      });
+
+      // Filter switching
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("filter-btn")) {
+          e.target.parentElement?.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+          e.target.classList.add("active");
+          ds.activeFilter = e.target.getAttribute("data-filter");
+
+          if (ds.activeTab === "alerts") renderAlerts();
+          else if (ds.activeTab === "sensors") renderSensors();
+        }
+      });
+
+      // Event listeners
+      $("refresh").addEventListener("click", refresh);
+      $("seed").addEventListener("click", seed);
+
+      // Initialize on load
+      window.addEventListener("load", () => {
+        initMap();
+        refresh();
+
+        // Auto-refresh every 30 seconds
+        setInterval(refresh, 30000);
+      });
+    </script>
+  </body>
+</html>
+

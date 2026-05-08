@@ -1,0 +1,1078 @@
+{
+  "sensor_readings": [
+    {
+      "id": "8ab6be1e-a7f1-46d6-8f64-644ff80b5db0",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T13:56:23.551Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.59",
+        "turbidity_ntu": "9.6",
+        "do_mg_l": "6.2",
+        "tds_ppm": 685,
+        "temp_c": "28.9"
+      }
+    },
+    {
+      "id": "93b59632-991d-4910-ae13-2f6a940d75ea",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T13:56:23.551Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.73",
+        "turbidity_ntu": "10.8",
+        "do_mg_l": "6.2",
+        "tds_ppm": 737,
+        "temp_c": "29.6"
+      }
+    },
+    {
+      "id": "375d33dd-4748-47ea-87a9-67fc0331b816",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T13:56:23.551Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.24",
+        "turbidity_ntu": "10.4",
+        "do_mg_l": "5.6",
+        "tds_ppm": 721,
+        "temp_c": "29.4"
+      }
+    },
+    {
+      "id": "ce5cccd5-d87a-4974-a65c-2345982e7315",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T09:47:44.693Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.54",
+        "turbidity_ntu": "9.1",
+        "do_mg_l": "5.7",
+        "tds_ppm": 721,
+        "temp_c": "29.2"
+      }
+    },
+    {
+      "id": "03669a4e-3169-481c-b634-ce8729398688",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T09:47:44.693Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.63",
+        "turbidity_ntu": "9.8",
+        "do_mg_l": "6.2",
+        "tds_ppm": 720,
+        "temp_c": "28.2"
+      }
+    },
+    {
+      "id": "2a054b5f-6dba-4808-b715-e517649cf08c",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T09:47:44.693Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.60",
+        "turbidity_ntu": "9.2",
+        "do_mg_l": "6.5",
+        "tds_ppm": 673,
+        "temp_c": "29.4"
+      }
+    },
+    {
+      "id": "de318b76-d72d-4198-8e0a-420ddf05dc21",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T09:29:46.134Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.87",
+        "turbidity_ntu": "10.2",
+        "do_mg_l": "6.2",
+        "tds_ppm": 662,
+        "temp_c": "28.7"
+      }
+    },
+    {
+      "id": "2d40f12e-1349-423e-8a5e-128ac8f23ce1",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T09:29:46.134Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.89",
+        "turbidity_ntu": "8.1",
+        "do_mg_l": "6.0",
+        "tds_ppm": 696,
+        "temp_c": "29.0"
+      }
+    },
+    {
+      "id": "b1fc3aee-e2f5-4383-9e92-01b8bdaa3114",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T09:29:46.134Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.44",
+        "turbidity_ntu": "9.7",
+        "do_mg_l": "6.4",
+        "tds_ppm": 683,
+        "temp_c": "28.7"
+      }
+    },
+    {
+      "id": "6180f832-83c0-419a-bf1b-7966d206da98",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T09:27:36.037Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.34",
+        "turbidity_ntu": "8.3",
+        "do_mg_l": "6.0",
+        "tds_ppm": 710,
+        "temp_c": "29.1"
+      }
+    },
+    {
+      "id": "a149832a-48b6-4813-933b-595d3612dd2e",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T09:27:36.037Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.33",
+        "turbidity_ntu": "10.0",
+        "do_mg_l": "6.2",
+        "tds_ppm": 696,
+        "temp_c": "28.3"
+      }
+    },
+    {
+      "id": "aac5b4e1-9547-4e78-b18c-19857f65c139",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T09:27:36.037Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.57",
+        "turbidity_ntu": "10.8",
+        "do_mg_l": "5.7",
+        "tds_ppm": 701,
+        "temp_c": "28.0"
+      }
+    },
+    {
+      "id": "6dcdc0e4-0437-468f-9fa5-61200bf5338e",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T09:27:13.881Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.18",
+        "turbidity_ntu": "9.3",
+        "do_mg_l": "6.2",
+        "tds_ppm": 721,
+        "temp_c": "29.9"
+      }
+    },
+    {
+      "id": "9ae8d405-f1e1-4c3c-835b-efe2bf3da713",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T09:27:13.881Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.87",
+        "turbidity_ntu": "9.0",
+        "do_mg_l": "6.5",
+        "tds_ppm": 725,
+        "temp_c": "28.9"
+      }
+    },
+    {
+      "id": "77350a10-bf67-4abf-9ca1-18d9ded5d056",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T09:27:13.881Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.70",
+        "turbidity_ntu": "8.5",
+        "do_mg_l": "6.1",
+        "tds_ppm": 684,
+        "temp_c": "28.8"
+      }
+    },
+    {
+      "id": "dfa32067-2901-49c6-96d7-d82de03f5c82",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T08:12:34.936Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.82",
+        "turbidity_ntu": "10.0",
+        "do_mg_l": "5.8",
+        "tds_ppm": 687,
+        "temp_c": "29.5"
+      }
+    },
+    {
+      "id": "ab62a844-0e36-494f-8dae-580285fb86b5",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T08:12:34.936Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.69",
+        "turbidity_ntu": "10.8",
+        "do_mg_l": "5.9",
+        "tds_ppm": 732,
+        "temp_c": "29.4"
+      }
+    },
+    {
+      "id": "86eee248-6306-4e93-876e-b57611b640b3",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T08:12:34.936Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.05",
+        "turbidity_ntu": "9.1",
+        "do_mg_l": "6.0",
+        "tds_ppm": 746,
+        "temp_c": "29.4"
+      }
+    },
+    {
+      "id": "f15993f4-3853-4205-9cec-07895d3d8ca5",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T08:08:15.481Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.30",
+        "turbidity_ntu": "10.1",
+        "do_mg_l": "6.2",
+        "tds_ppm": 704,
+        "temp_c": "28.1"
+      }
+    },
+    {
+      "id": "77277450-f789-48b6-93f5-0b246d18e7ba",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T08:08:15.481Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.93",
+        "turbidity_ntu": "9.0",
+        "do_mg_l": "5.9",
+        "tds_ppm": 668,
+        "temp_c": "29.7"
+      }
+    },
+    {
+      "id": "ccc1be98-fdd2-4594-b8b4-3fac3a57514e",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T08:08:15.481Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.83",
+        "turbidity_ntu": "8.4",
+        "do_mg_l": "5.8",
+        "tds_ppm": 746,
+        "temp_c": "29.2"
+      }
+    },
+    {
+      "id": "bad01fb8-7a90-4849-b9f9-54f722327fb6",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T08:07:04.775Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.96",
+        "turbidity_ntu": "9.5",
+        "do_mg_l": "6.0",
+        "tds_ppm": 726,
+        "temp_c": "29.4"
+      }
+    },
+    {
+      "id": "0a018a59-7f56-4382-b3b9-8ef8458fb8c2",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T08:07:04.775Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.11",
+        "turbidity_ntu": "9.0",
+        "do_mg_l": "5.8",
+        "tds_ppm": 732,
+        "temp_c": "28.8"
+      }
+    },
+    {
+      "id": "ba4ab313-7cfd-49ac-8ea0-2e3db8a72563",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T08:07:04.775Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.21",
+        "turbidity_ntu": "8.6",
+        "do_mg_l": "5.6",
+        "tds_ppm": 681,
+        "temp_c": "28.8"
+      }
+    },
+    {
+      "id": "c0abea64-864e-49fc-9fc2-0ae80ccf2ac5",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T08:06:34.984Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.68",
+        "turbidity_ntu": "9.6",
+        "do_mg_l": "5.8",
+        "tds_ppm": 685,
+        "temp_c": "29.1"
+      }
+    },
+    {
+      "id": "aab76e4b-f96c-4c5c-98f6-b6b1d0619709",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T08:06:34.984Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.29",
+        "turbidity_ntu": "8.4",
+        "do_mg_l": "5.9",
+        "tds_ppm": 731,
+        "temp_c": "28.5"
+      }
+    },
+    {
+      "id": "808a4683-f9f6-4582-8c26-4b52f616b58f",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T08:06:34.984Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.45",
+        "turbidity_ntu": "8.6",
+        "do_mg_l": "5.7",
+        "tds_ppm": 665,
+        "temp_c": "29.5"
+      }
+    },
+    {
+      "id": "dde07f0c-4373-42c3-a522-791bd0f14db3",
+      "device_id": "NOYYA-WQ-NOYYA-01",
+      "observed_at": "2026-05-08T08:04:31.324Z",
+      "lat": 11.002,
+      "lon": 76.958,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.80",
+        "turbidity_ntu": "9.8",
+        "do_mg_l": "5.6",
+        "tds_ppm": 677,
+        "temp_c": "29.6"
+      }
+    },
+    {
+      "id": "84251eef-e951-4064-9303-553c4a464dcc",
+      "device_id": "NOYYA-WQ-UKKADAM-02",
+      "observed_at": "2026-05-08T08:04:31.324Z",
+      "lat": 11.008,
+      "lon": 76.962,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.12",
+        "turbidity_ntu": "9.8",
+        "do_mg_l": "5.8",
+        "tds_ppm": 737,
+        "temp_c": "28.9"
+      }
+    },
+    {
+      "id": "98f7470b-48dc-46b0-b6c2-1b4ba4304728",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T08:04:31.324Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": "7.52",
+        "turbidity_ntu": "8.3",
+        "do_mg_l": "6.0",
+        "tds_ppm": 686,
+        "temp_c": "29.9"
+      }
+    },
+    {
+      "id": "2971f547-9844-4b68-b11d-10549ce527ee",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T07:09:49.981Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": 7.2,
+        "turbidity_ntu": 9.1,
+        "do_mg_l": 5.8,
+        "tds_ppm": 680,
+        "temp_c": 29.4
+      }
+    },
+    {
+      "id": "9f67db47-c2e1-4464-874d-2fa10c768b13",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-08T07:09:47.453Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": 7.2,
+        "turbidity_ntu": 9.1,
+        "do_mg_l": 5.8,
+        "tds_ppm": 680,
+        "temp_c": 29.4
+      }
+    },
+    {
+      "id": "e0d17afa-036e-4899-aecd-7b5973adb9f7",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-07T10:52:25.852Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": 7.2,
+        "turbidity_ntu": 9.1,
+        "do_mg_l": 5.8,
+        "tds_ppm": 680,
+        "temp_c": 29.4
+      }
+    },
+    {
+      "id": "0476e515-8f12-4871-93a9-52344fffaca8",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-07T10:52:25.140Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": 7.2,
+        "turbidity_ntu": 9.1,
+        "do_mg_l": 5.8,
+        "tds_ppm": 680,
+        "temp_c": 29.4
+      }
+    },
+    {
+      "id": "522591a2-6ab8-4d18-93e7-781a738fdaef",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-07T10:52:23.324Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": 7.2,
+        "turbidity_ntu": 9.1,
+        "do_mg_l": 5.8,
+        "tds_ppm": 680,
+        "temp_c": 29.4
+      }
+    },
+    {
+      "id": "567319ea-1e0c-481d-9603-5a8e5b45079f",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-07T10:52:20.092Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": 7.2,
+        "turbidity_ntu": 9.1,
+        "do_mg_l": 5.8,
+        "tds_ppm": 680,
+        "temp_c": 29.4
+      }
+    },
+    {
+      "id": "78779402-0f6d-47e8-abd0-028a3bdf8f4f",
+      "device_id": "NOYYA-WQ-UKKADAM-01",
+      "observed_at": "2026-05-07T10:51:56.863Z",
+      "lat": 11.005,
+      "lon": 76.961,
+      "kind": "water",
+      "metrics": {
+        "ph": 7.2,
+        "turbidity_ntu": 9.1,
+        "do_mg_l": 5.8,
+        "tds_ppm": 680,
+        "temp_c": 29.4
+      }
+    }
+  ],
+  "alert_events": [
+    {
+      "id": "90b28a09-ca6a-4576-ae81-04f02833dbf8",
+      "created_at": "2026-05-08T13:56:23.719Z",
+      "severity": "error",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.00112031688061,
+      "lon": 76.95800078703212,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "a3481ef7-6dc4-46ff-87b6-24002f8107fb",
+      "created_at": "2026-05-08T13:56:23.711Z",
+      "severity": "error",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.00754454702568,
+      "lon": 76.96186866263105,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "c1690bd4-c8ed-47f1-95a4-cca547d4f9f5",
+      "created_at": "2026-05-08T13:56:23.706Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.004477369872154,
+      "lon": 76.96148089284627,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "b670a653-8c1c-408f-8034-0999e78c5a9e",
+      "created_at": "2026-05-08T09:29:47.634Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.00205868063304,
+      "lon": 76.95776424945397,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "57409fac-bc95-4194-a229-4a224048d852",
+      "created_at": "2026-05-08T09:29:47.551Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.008977182387442,
+      "lon": 76.9614833690026,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "42be2eea-fcd3-4995-8605-c5959004b39b",
+      "created_at": "2026-05-08T09:29:47.519Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.005017576367104,
+      "lon": 76.96133817032707,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "282ab351-563d-4598-b917-0efa32b6e9b5",
+      "created_at": "2026-05-08T09:27:36.163Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.002823036349108,
+      "lon": 76.95711376852707,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "0eb93243-ed78-411d-9f87-cd5d9d55ba89",
+      "created_at": "2026-05-08T09:27:36.136Z",
+      "severity": "error",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.008430787018208,
+      "lon": 76.96171166160879,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "278ed760-ab10-4d6b-9feb-d0417335b819",
+      "created_at": "2026-05-08T09:27:36.115Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.00419659026725,
+      "lon": 76.9613282349144,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "8ba8c1fa-21d1-4bcb-b907-9d8edc122d3c",
+      "created_at": "2026-05-08T09:27:14.031Z",
+      "severity": "error",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.001837312085033,
+      "lon": 76.95728704976821,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "4fbf14d6-a50f-4462-ab81-bcfa6f1b31a8",
+      "created_at": "2026-05-08T09:27:14.002Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.007978496879964,
+      "lon": 76.96260156922288,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "626d95d9-2177-4238-87eb-175c378d88d0",
+      "created_at": "2026-05-08T09:27:13.969Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.005436795441073,
+      "lon": 76.9606578875965,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "9a9786d5-5943-4bb0-85d0-b1c7f041da6d",
+      "created_at": "2026-05-08T08:12:35.054Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.002744497799656,
+      "lon": 76.95742870381063,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "7c3fa539-3c4d-4a61-872f-5813c65731f4",
+      "created_at": "2026-05-08T08:12:35.034Z",
+      "severity": "error",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.008414169116438,
+      "lon": 76.96183084549813,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "a109c147-c471-463f-816a-b6b80d3c98dc",
+      "created_at": "2026-05-08T08:12:35.010Z",
+      "severity": "error",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.005897177532015,
+      "lon": 76.96070899377096,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "bf5ef1f8-5021-46f0-8c7d-d35eff81dcf1",
+      "created_at": "2026-05-08T08:08:15.642Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.00189011353237,
+      "lon": 76.95700629682264,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "3359e027-8d23-439b-8304-32626a95c8a1",
+      "created_at": "2026-05-08T08:08:15.610Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.008761157775806,
+      "lon": 76.96101395501734,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "37b24afe-7d8b-44cf-aeed-faa28a9841ad",
+      "created_at": "2026-05-08T08:08:15.576Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.005477040622178,
+      "lon": 76.96121628538879,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "e93d892b-532a-47fa-9bc5-4f2ef1afa779",
+      "created_at": "2026-05-08T08:07:04.895Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.001408404983843,
+      "lon": 76.95709462174719,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "2b03ef8d-1c9c-442d-b290-043a01eca9bf",
+      "created_at": "2026-05-08T08:07:04.873Z",
+      "severity": "error",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.008047191061229,
+      "lon": 76.96241981714215,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "d4aae109-3817-455f-8e2c-a8f6db377003",
+      "created_at": "2026-05-08T08:07:04.852Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.004235105681639,
+      "lon": 76.9604520923024,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "50e56f0e-61ac-4b0a-a7ea-7208c2d1ce18",
+      "created_at": "2026-05-08T08:06:35.087Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.00155759874612,
+      "lon": 76.9581319244596,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "69c58ae3-b992-40de-b67e-7b09717ca0f0",
+      "created_at": "2026-05-08T08:06:35.071Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.008809064826387,
+      "lon": 76.96229884323719,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "5a975236-6984-447e-bf35-6af6185cfd0d",
+      "created_at": "2026-05-08T08:06:35.050Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.004453844838594,
+      "lon": 76.96082786733987,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "5bfc8169-33a0-4f42-8ef8-0d19dbae44ae",
+      "created_at": "2026-05-08T08:04:31.555Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.002082197789093,
+      "lon": 76.95829128742672,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "58a3d520-23a6-4295-a7b2-2aa87193c17b",
+      "created_at": "2026-05-08T08:04:31.525Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.008629852125203,
+      "lon": 76.96201760434728,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "b6d13a57-915b-4868-a9f8-1c99ef59722d",
+      "created_at": "2026-05-08T08:04:31.493Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Oxygen level low",
+      "description": "Automated anomaly detection triggered. Recommend field verification.",
+      "lat": 11.004449382872382,
+      "lon": 76.96076784182854,
+      "source": {
+        "rule": "threshold",
+        "metric": "water_quality"
+      },
+      "status": "open"
+    },
+    {
+      "id": "6329addd-7ad4-45a9-adf0-e47f1d700cbb",
+      "created_at": "2026-05-08T07:09:49.988Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Turbidity crossed threshold near Ukkadam stretch. Recommend field verification and upstream scan.",
+      "lat": 11.005,
+      "lon": 76.961,
+      "source": {
+        "rule": "threshold",
+        "metric": "turbidity_ntu",
+        "threshold": 8
+      },
+      "status": "open"
+    },
+    {
+      "id": "e27bda78-90e6-468c-a29f-f924e85d9f75",
+      "created_at": "2026-05-08T07:09:48.298Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Turbidity crossed threshold near Ukkadam stretch. Recommend field verification and upstream scan.",
+      "lat": 11.005,
+      "lon": 76.961,
+      "source": {
+        "rule": "threshold",
+        "metric": "turbidity_ntu",
+        "threshold": 8
+      },
+      "status": "open"
+    },
+    {
+      "id": "fb941e13-d916-4a86-a37c-6ee79baf2fc8",
+      "created_at": "2026-05-07T10:52:25.860Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Turbidity crossed threshold near Ukkadam stretch. Recommend field verification and upstream scan.",
+      "lat": 11.005,
+      "lon": 76.961,
+      "source": {
+        "rule": "threshold",
+        "metric": "turbidity_ntu",
+        "threshold": 8
+      },
+      "status": "open"
+    },
+    {
+      "id": "fc6adf86-af4b-430f-99fc-844d94e81126",
+      "created_at": "2026-05-07T10:52:25.147Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Turbidity crossed threshold near Ukkadam stretch. Recommend field verification and upstream scan.",
+      "lat": 11.005,
+      "lon": 76.961,
+      "source": {
+        "rule": "threshold",
+        "metric": "turbidity_ntu",
+        "threshold": 8
+      },
+      "status": "open"
+    },
+    {
+      "id": "2d496e88-4de8-4235-b663-f30c85ab8031",
+      "created_at": "2026-05-07T10:52:23.331Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Turbidity crossed threshold near Ukkadam stretch. Recommend field verification and upstream scan.",
+      "lat": 11.005,
+      "lon": 76.961,
+      "source": {
+        "rule": "threshold",
+        "metric": "turbidity_ntu",
+        "threshold": 8
+      },
+      "status": "open"
+    },
+    {
+      "id": "a8c53e9e-2cb6-4ed0-994f-7d19ec3abff1",
+      "created_at": "2026-05-07T10:52:20.106Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Turbidity crossed threshold near Ukkadam stretch. Recommend field verification and upstream scan.",
+      "lat": 11.005,
+      "lon": 76.961,
+      "source": {
+        "rule": "threshold",
+        "metric": "turbidity_ntu",
+        "threshold": 8
+      },
+      "status": "open"
+    },
+    {
+      "id": "dfe0eb73-893b-426a-bff7-e9e645a45e47",
+      "created_at": "2026-05-07T10:51:57.865Z",
+      "severity": "warning",
+      "category": "water",
+      "title": "Turbidity spike detected",
+      "description": "Turbidity crossed threshold near Ukkadam stretch. Recommend field verification and upstream scan.",
+      "lat": 11.005,
+      "lon": 76.961,
+      "source": {
+        "rule": "threshold",
+        "metric": "turbidity_ntu",
+        "threshold": 8
+      },
+      "status": "open"
+    }
+  ]
+}

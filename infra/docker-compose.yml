@@ -1,0 +1,28 @@
+name: noyya-intel
+
+services:
+  db:
+    image: timescale/timescaledb-ha:pg16
+    container_name: noyya-db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: noyya
+    ports:
+      - "5432:5432"
+    volumes:
+      - noyya_db_data:/var/lib/postgresql/data
+
+  mqtt:
+    image: eclipse-mosquitto:2
+    container_name: noyya-mqtt
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - noyya_mqtt_data:/mosquitto/data
+
+volumes:
+  noyya_db_data:
+  noyya_mqtt_data:
+
