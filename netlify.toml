@@ -1,0 +1,16 @@
+[build]
+base = "apps/web"
+command = "npm install && npm run build"
+publish = "apps/web/.next"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+[env]
+[env.production]
+NEXT_PUBLIC_API_BASE_URL = "https://noyyal-api.onrender.com"
+
+[env.development]
+NEXT_PUBLIC_API_BASE_URL = "http://localhost:8000"
