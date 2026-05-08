@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: noyyal-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd services/api-node && npm install
+    startCommand: cd services/api-node && npm run dev
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
